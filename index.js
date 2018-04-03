@@ -38,7 +38,7 @@ app.post('/api/sendMail', (req, res, next) => {
     res.send({ express: 'Email Sent' });*/
 
     const sgMail = require('@sendgrid/mail');
-    sgMail.setApiKey('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');
+    sgMail.setApiKey('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');
     const msg = {
         to: 'adinahc@gmail.com',
         from: 'adinahc@gmail.com',
