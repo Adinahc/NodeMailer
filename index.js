@@ -24,30 +24,18 @@ app.get('/api/hello', (req, res, next) => {
 });
 
 app.post('/api/sendMail', (req, res, next) => {
- 
-    /*const sgMail = require('@sendgrid/mail');
-    sgMail.setApiKey('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');
-    const msg = {
-      to: 'adinahc@gmail.com',
-      from: 'adinahc@gmail.com',
-      subject: 'Bags for th e Cure Registration',
-      text: 'Registration'
-    };
-    sgMail.send(msg);
-    //console.log(req.body);
-    res.send({ express: 'Email Sent' });*/
 
     const sgMail = require('@sendgrid/mail');
-    sgMail.setApiKey('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');
+    const message = req.query.name + ' ' + req.query.email + ' ' + req.query.phone;
+    sgMail.setApiKey('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');
     const msg = {
         to: 'adinahc@gmail.com',
         from: 'adinahc@gmail.com',
-      subject: 'Sending with SendGrid is Fun',
-      text: 'and easy to do anywhere, even with Node.js',
-      html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+        subject: 'Registration',
+        text: message
     };
+    console.log(message);
     sgMail.send(msg);    
-    console.log(msg);
     res.send({ express: 'Email Sent' });
 });
 
