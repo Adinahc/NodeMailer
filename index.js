@@ -26,13 +26,17 @@ app.get('/api/hello', (req, res, next) => {
 app.post('/api/sendMail', (req, res, next) => {
 
     const sgMail = require('@sendgrid/mail');
-    const message = req.query.name + ' ' + req.query.email + ' ' + req.query.phone;
+    const message = 'Team name: ' + req.query.name + '<br />' + 
+                    'Email: ' + req.query.email + '<br />' + 
+                    'Phone: ' + req.query.phone;
     sgMail.setApiKey('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');
     const msg = {
         to: 'adinahc@gmail.com',
         from: 'adinahc@gmail.com',
         subject: 'Registration',
-        text: message
+        text: message,
+        html: message
+
     };
     console.log(message);
     sgMail.send(msg);    
